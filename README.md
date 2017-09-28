@@ -32,9 +32,7 @@ It is also possible to mount inside container aws credentials file with correspo
 (http://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-config-files.html)
 
 ```
-$ docker run -d --name s3cleaner -e "AWS_ACCESS_KEY_ID=MY_AWS_ACCESS_KEY_ID" \
-                                 -e "AWS_SECRET_ACCESS_KEY=MY_AWS_SECRET_ACCESS_KEY" \
-                                 -e "S3_BUCKET_NAME=my-shiny-archive" \
+$ docker run -d --name s3cleaner -e "S3_BUCKET_NAME=my-shiny-archive" \
                                  -e "S3_OBJECT_PREFIX=photos" \
                                  -e "S3_OBJECT_AGE=100" \
                                  -e "S3_PAGE_SIZE=1000" \
