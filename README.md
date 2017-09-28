@@ -24,6 +24,7 @@ $ docker run -d --name s3cleaner -e "AWS_ACCESS_KEY_ID=MY_AWS_ACCESS_KEY_ID" \
                                  -e "S3_BUCKET_NAME=my-shiny-archive" \
                                  -e "S3_OBJECT_PREFIX=photos" \
                                  -e "S3_OBJECT_AGE=100" \
+                                 -e "S3_OBJECT_NAME=.jpg" \
                                  -e "S3_PAGE_SIZE=1000" \
                                  s3bucketcleaner:latest
 ```
@@ -35,6 +36,7 @@ It is also possible to mount inside container aws credentials file with correspo
 $ docker run -d --name s3cleaner -e "S3_BUCKET_NAME=my-shiny-archive" \
                                  -e "S3_OBJECT_PREFIX=photos" \
                                  -e "S3_OBJECT_AGE=100" \
+                                 -e "S3_OBJECT_NAME=.jpg" \
                                  -e "S3_PAGE_SIZE=1000" \
                                  -v /aws_bucket/credentials:/root/.aws/credentials \
                                  s3bucketcleaner:latest
