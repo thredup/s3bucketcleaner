@@ -42,7 +42,10 @@ def delete_objects(objects):
         Bucket=s3_bucket_name,
         Delete={'Objects': objects, 'Quiet': True},
         )
-    print(response)
+    if 'Errors' in response:
+        print('Delete Error: {}'.format(response))
+    else:
+        print('Deleted: {} objects.'.format(len(objects)))
 
 
 content = True
@@ -57,6 +60,7 @@ while content:
     if 'Contents' in s3objects:
         if 'NextContinuationToken' in s3objects:
             token = s3objects['NextContinuationToken']
+            print('Next Page Token: {}'.format(token))
         else:
             content = False
         for s3object in s3objects['Contents']:
